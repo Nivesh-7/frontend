@@ -17,13 +17,17 @@ function App() {
     try {
       const parsedJson = JSON.parse(jsonInput); // Parse the JSON input
 
-      const response = await fetch("http://127.0.0.1:5000/bfhl", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(parsedJson), // Send the parsed JSON as a string
-      });
+      // Updated URL to point to the Vercel deployment
+      const response = await fetch(
+        "https://backend-97hx9s6um-niveshs-projects-a15cc85e.vercel.app/api/bfhl",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(parsedJson), // Send the parsed JSON as a string
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
